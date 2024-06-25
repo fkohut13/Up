@@ -1,0 +1,189 @@
+.App {
+  text-align: center;
+  background-color: #121212;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.App-header {
+  background-color: #121212;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.Main-content {
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.musica {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #1A1A1A;
+}
+
+.texto {
+  display: flex;
+
+  align-items: center;
+  width: 100%;
+}
+
+.play-icon {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.delete-icon {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.edit-icon {
+  width: 15px;
+  height: 15px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.musica-detalhes p {
+  font-size: 1rem;
+  margin: 5px 0 0 0 ;
+}
+.musica-detalhes h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+.musica-detalhes {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  width: 75%;
+  margin-left: 20px;
+}
+.img-musica {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 30%;
+}
+.img-musica:hover {
+  transition: all 0.5s ease;
+  
+}
+.Adicionar-msc {
+  background-color: #1a1a1a;
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 60%;
+}
+ 
+h2 {
+  color: white;
+}
+
+.Adicionar-msc form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.Main-content{
+  width: 100%;
+}
+
+.Adicionar-msc input {
+  width: 100%;
+  margin: 5px 0;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.Adicionar-msc button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #2f8f15;
+  border: none;
+  cursor: pointer;
+}
+
+.Adicionar-msc button:hover {
+  background-color: #1b6614;
+}
+.inputField {
+  background:none;
+  border: solid 1px rgb(255, 255, 255);
+  color: white;
+
+}
+.section {
+  width: 50%;
+}
+.submitBtn {
+  border: solid 1px rgb(255, 255, 255);
+  color: green;
+  background: none;
+  cursor: pointer;
+}
+.musicainfo-container {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.informacao-musica-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 10px;
+  grid-template-columns: 1fr;
+}
+
+.img-musica-info {
+  max-width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.artist-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.album-info {
+  color: #666;
+}
+
+.genre-info {
+  color: #999;
+}
+ul,
+li {
+  list-style: none;
+}
+

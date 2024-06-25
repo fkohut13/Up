@@ -80,3 +80,4 @@
 /home/fkohut/Code/c#/a2/project/WebApplication1/bin/Debug/net8.0/Microsoft.AspNetCore.JsonPatch.dll
 /home/fkohut/Code/c#/a2/project/WebApplication1/bin/Debug/net8.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 /home/fkohut/Code/c#/a2/project/WebApplication1/bin/Debug/net8.0/Newtonsoft.Json.Bson.dll
+/home/fkohut/Code/c#/a2/project/WebApplication1/obj/Debug/net8.0/WebApplication1.sourcelink.json

@@ -8,7 +8,7 @@ class Programs
 
     static void Main(string[] args)
     {
-        //web aplication config
+        //web aplication configuração
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddControllers().AddNewtonsoftJson();
@@ -17,23 +17,25 @@ class Programs
             config.DocumentName = "Playlist_Program";
             config.Title = "Playlist v1";
             config.Version = "v1";
-
-
         });
-        builder.Services.AddDbContext<AppDbContext>();
 
-        WebApplication app = builder.Build();
-        if (app.Environment.IsDevelopment())
+        var origins = "_origins";
+
+        builder.Services.AddCors(options =>
         {
-            app.UseOpenApi();
-            app.UseSwaggerUi(config =>
+            options.AddPolicy(name: origins, policy =>
             {
-                config.DocumentTitle = "Playlist API";
-                config.Path = "/swagger";
-                config.DocumentPath = "/swagger/{documentName}/swagger.json";
-                config.DocExpansion = "list";
+                policy.WithOrigins("http://localhost:3000") 
+                      .AllowAnyHeader()
+                      .AllowAnyMethod();
             });
-        }
+        });
+
+        builder.Services.AddDbContext<AppDbContext>();
+        WebApplication app = builder.Build();
+        app.UseCors(origins);
+        app.UseRouting();
+        app.MapControllers();
 
         // Recupera todos os valores dentro da playlist
         app.MapGet("/api/Playlist", (AppDbContext context) =>
@@ -86,9 +88,9 @@ class Programs
 
 
         //Adicionar musica na playlist
-        app.MapPost("/api/Playlist", (AppDbContext context, string Musicname, string genre, string album, string artist) =>
+        app.MapPost("/api/Playlist/adicionar", (AppDbContext context, string Musicname, string genre, string album, string artist, string imglink, string musiclink) =>
         {
-            var music = new Playlist(Guid.NewGuid(), Musicname, genre, album, artist);
+            var music = new Playlist(Guid.NewGuid(), Musicname, genre, album, artist, imglink, musiclink);
 
             context.Playlist.Add(music);
             context.SaveChanges();
@@ -137,7 +139,7 @@ class Programs
 
 
         //Atualizar playlist parcialmente (nome da musica)
-        app.MapPatch("/api/Playlist/{id}", (Guid id, MusicNamePatchModel musicpatch, AppDbContext context) =>
+        app.MapPatch("/api/Playlist/patch{id}", (Guid id, MusicNamePatchModel musicpatch, AppDbContext context) =>
         {
             var playlist = context.Playlist.Find(id);
             if (playlist == null)
@@ -148,7 +150,9 @@ class Programs
             if (!string.IsNullOrEmpty(musicpatch.Musicname)) // se não estiver vazio
             {
                 playlist.Musicname = musicpatch.Musicname; // !
-            } else {
+            }
+            else
+            {
                 Console.WriteLine("Erro! o nome da musica não foi digitado");
             }
 
